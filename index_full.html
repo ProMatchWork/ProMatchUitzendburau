@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProMatch | Uitzendbureau voor productie, proces, haven & techniek</title>
+  <meta name="description" content="ProMatch is het uitzendbureau voor productiemedewerkers, procesoperators, havenmedewerkers, schoonmakers, flensmonteurs en werkvoorbereiders. Snel de juiste match voor uw organisatie of carrière." />
+  <meta name="theme-color" content="#0e7490" />
+  <style>
+    :root{
+      --bg:#0f172a; --panel:#0b1220; --muted:#cbd5e1; --text:#e2e8f0;
+      --brand:#06b6d4; --brand-2:#22c55e; --ring:#67e8f9; --shadow:0 10px 30px rgba(0,0,0,.3);
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans;background:
+      radial-gradient(1200px 800px at 80% -10%, rgba(34,197,94,.15), transparent 60%),
+      radial-gradient(900px 700px at 10% 0%, rgba(6,182,212,.18), transparent 55%),
+      var(--bg); color:var(--text); line-height:1.6}
+    a{color:var(--brand); text-decoration:none}
+    .container{max-width:1120px; margin:0 auto; padding:0 20px}
+    header{position:sticky; top:0; backdrop-filter: blur(8px); background: linear-gradient(180deg, rgba(15,23,42,.85), rgba(15,23,42,.6)); border-bottom:1px solid rgba(255,255,255,.06); z-index:50}
+    nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; gap:12px; align-items:center}
+    .logo{width:36px; height:36px; border-radius:12px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display:grid; place-items:center; box-shadow: var(--shadow)}
+    .brand h1{font-size:1.15rem; margin:0}
+    .nav-links{display:flex; gap:18px; align-items:center}
+    .btn{display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.15);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); color:var(--text);
+      padding:12px 16px; border-radius:14px; box-shadow: var(--shadow); transition:.2s transform}
+    .btn:hover{transform: translateY(-1px)}
+    .btn--primary{background: linear-gradient(135deg, rgba(6,182,212,.4), rgba(34,197,94,.35)); border-color: transparent}
+    .hero{padding:80px 0 40px}
+    .hero-grid{display:grid; grid-template-columns: 1.3fr 1fr; gap:28px; align-items:center}
+    .hero h2{font-size:clamp(1.9rem, 2.8vw, 3rem); line-height:1.15; margin:8px 0 14px}
+    .hero p{color:var(--muted); max-width:58ch}
+    .badges{display:flex; gap:12px; flex-wrap:wrap; margin:20px 0}
+    .badge{padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); font-size:.95rem}
+    .card{background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px; box-shadow: var(--shadow)}
+    .kpi{display:grid; grid-template-columns: repeat(3,1fr); gap:14px; margin-top:18px}
+    .kpi .card h3{margin:0; font-size:1.6rem}
+    .section{padding:60px 0}
+    .section h3{font-size:1.6rem; margin:0 0 10px}
+    .section p.lead{color:var(--muted); margin:0 0 24px}
+    .services{display:grid; grid-template-columns: repeat(3,1fr); gap:16px}
+    .service .title{display:flex; align-items:center; gap:10px; font-weight:600}
+    .service p{color:var(--muted); margin-top:8px}
+    .split{display:grid; grid-template-columns: 1fr 1fr; gap:24px; align-items:center}
+    .list{display:grid; gap:10px; margin:14px 0 0}
+    .list li{display:flex; gap:10px; align-items:flex-start}
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .contact{display:grid; grid-template-columns: 1.1fr .9fr; gap:24px}
+    form{display:grid; gap:12px}
+    label{font-weight:600}
+    input, select, textarea{width:100%; background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); color:var(--text); padding:12px 14px; border-radius:12px}
+    input:focus, select:focus, textarea:focus{outline:2px solid var(--ring); border-color: transparent}
+    textarea{min-height:120px; resize:vertical}
+    .hint{color:var(--muted); font-size:.95rem}
+    footer{margin-top:50px; padding:28px 0 40px; border-top:1px solid rgba(255,255,255,.08); color:#a8b1c4; font-size:.95rem}
+    .footgrid{display:grid; grid-template-columns: 1fr auto; gap:14px; align-items:center}
+    @media (max-width: 980px){.hero-grid, .split, .contact{grid-template-columns: 1fr}}
+    @media (max-width: 860px){.services{grid-template-columns: repeat(2,1fr)}}
+    @media (max-width: 520px){.nav-links{display:none}.services{grid-template-columns: 1fr}.kpi{grid-template-columns: 1fr 1fr}}
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          const id = a.getAttribute('href');
+          if(id.length > 1){
+            e.preventDefault();
+            document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});
+          }
+        })
+      })
+    })
+    function handleContactSubmit(e){
+      e.preventDefault();
+      const form = e.target;
+      const data = Object.fromEntries(new FormData(form).entries());
+      const required = ['naam','email','bericht'];
+      for(const key of required){
+        if(!data[key] || String(data[key]).trim()===''){
+          alert('Vul alstublieft alle verplichte velden in.'); return;
+        }
+      }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){
+        alert('Controleer uw e-mailadres.'); return;
+      }
+      const btn = form.querySelector('button[type=submit]');
+      const original = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Verzenden…';
+      setTimeout(() => {
+        btn.disabled = false; btn.textContent = original;
+        form.reset();
+        alert('Bedankt! We nemen spoedig contact met u op.');
+      }, 800);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#home" aria-label="ProMatch">
+          <span class="logo" aria-hidden="true"></span>
+          <h1>ProMatch</h1>
+        </a>
+        <div class="nav-links" role="navigation" aria-label="Hoofdmenu">
+          <a href="#diensten">Diensten</a>
+          <a href="#werkgevers">Werkgevers</a>
+          <a href="#kandidaten">Kandidaten</a>
+          <a href="#contact" class="btn btn--primary">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badges">
+          <span class="badge">Landelijk actief</span>
+          <span class="badge">Snelle plaatsing</span>
+          <span class="badge">24/7 bereikbaar</span>
+        </div>
+        <h2>De juiste match voor <em>productie</em>, <em>proces</em>, <em>haven</em>, <em>schoonmaak</em> en <em>techniek</em></h2>
+        <p>ProMatch verbindt gemotiveerde vakmensen aan toonaangevende opdrachtgevers. Flexibel, betrouwbaar en met aandacht voor veiligheid en continuïteit.</p>
+        <div class="cta">
+          <a class="btn btn--primary" href="#kandidaten">Ik zoek werk</a>
+          <a class="btn" href="#werkgevers">Ik zoek personeel</a>
+        </div>
+        <div class="kpi">
+          <div class="card" aria-live="polite"><h3>48u</h3><div class="hint">Gem. tijd tot plaatsing</div></div>
+          <div class="card"><h3>1.200+</h3><div class="hint">Kandidaten in netwerk</div></div>
+          <div class="card"><h3>97%</h3><div class="hint">Opdrachtgevers beveelt ons aan</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Snel personeel nodig?</h3>
+        <p class="hint">Beschrijf uw aanvraag en wij reageren dezelfde werkdag.</p>
+        <form action="https://formspree.io/f/movkzabl" method="POST" aria-label="Spoedaanvraag">
+          <label for="org">Bedrijfsnaam</label>
+          <input id="org" name="org" placeholder="Uw organisatie" autocomplete="organization" />
+          <label for="tel">Telefoon</label>
+          <input id="tel" name="telefoon" placeholder="06…" inputmode="tel" autocomplete="tel" />
+          <label for="type">Profiel</label>
+          <select id="type" name="type">
+            <option value="">Maak een keuze</option>
+            <option>Productiemedewerker</option>
+            <option>Procesoperator</option>
+            <option>Havenmedewerker</option>
+            <option>Schoonmaker</option>
+            <option>Flensmonteur</option>
+            <option>Werkvoorbereider</option>
+          </select>
+          <label for="aantal">Aantal</label>
+          <input id="aantal" name="aantal" type="number" min="1" placeholder="bijv. 5" />
+          <label for="bericht">Omschrijving</label>
+          <textarea id="bericht" name="bericht" placeholder="Wanneer, waar en welke werkzaamheden?" required></textarea>
+          <button class="btn btn--primary" type="submit">Verzoek versturen</button>
+          <div class="hint">Of mail ons direct: <a href="mailto:Pro.Match@outlook.com">Pro.Match@outlook.com</a> · Bel: <a href="tel:+31640202016">+31 6 40202016</a></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <section id="diensten" class="section">
+    <div class="container">
+      <h3>Diensten</h3>
+      <p class="lead">Wij leveren flexibel en vast personeel in zes kernprofielen.</p>
+      <div class="services">
+        <article class="card service">
+          <div class="title">Productiemedewerkers</div>
+          <p>Assemblage, inpak, logistieke ondersteuning en kwaliteitscontrole. Beschikbaar in ploegen en op oproepbasis.</p>
+        </article>
+        <article class="card service">
+          <div class="title">Procesoperators</div>
+          <p>Operators A/B/C met ervaring in food, chemie of maakindustrie. Focus op OEE en continu verbeteren.</p>
+        </article>
+        <article class="card service">
+          <div class="title">Havenmedewerkers</div>
+          <p>Lashers, heftruck-/reachstackerchauffeurs en stevedores. Veilig en efficiënt laden, lossen en terminalwerk.</p>
+        </article>
+        <article class="card service">
+          <div class="title">Schoonmakers</div>
+          <p>Industrieel en facilitair schoonmaakpersoneel, inclusief dieptereiniging en specialistische opdrachten.</p>
+        </article>
+        <article class="card service">
+          <div class="title">Flensmonteurs</div>
+          <p>Gecertificeerde flensmonteurs conform VCA/SOG, met aandacht voor veiligheid en lekkagepreventie.</p>
+        </article>
+        <article class="card service">
+          <div class="title">Werkvoorbereiders</div>
+          <p>Planning, materiaal- en werkpakketbeheer, tekeninglezen en coördinatie voor efficiënte uitvoering.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="werkgevers" class="section">
+    <div class="container split">
+      <div>
+        <h3>Voor werkgevers</h3>
+        <p class="lead">Snel opschalen met betrouwbare flexkrachten of structureel werven voor uw vaste team.</p>
+        <ul class="list">
+          <li>Personeel binnen 24–72 uur geplaatst</li>
+          <li>Screening & referentiecheck</li>
+          <li>Inclusief planning, verloning & verzuim</li>
+          <li>Transparante tarieven, geen verrassingen</li>
+        </ul>
+        <div class="cta">
+          <a class="btn btn--primary" href="#contact">Plaats een aanvraag</a>
+          <a class="btn" href="#diensten">Bekijk profielen</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Onze werkwijze</h3>
+        <ol class="list" style="list-style:none; counter-reset: step; gap:14px">
+          <li style="display:flex; gap:12px"><span style="flex:0 0 auto; width:28px; height:28px; border-radius:8px; background:rgba(255,255,255,.08); display:grid; place-items:center; font-weight:700">1</span> Intake & profielbepaling</li>
+          <li style="display:flex; gap:12px"><span style="flex:0 0 auto; width:28px; height:28px; border-radius:8px; background:rgba(255,255,255,.08); display:grid; place-items:center; font-weight:700">2</span> Voorselectie & screening</li>
+          <li style="display:flex; gap:12px"><span style="flex:0 0 auto; width:28px; height:28px; border-radius:8px; background:rgba(255,255,255,.08); display:grid; place-items:center; font-weight:700">3</span> Voorstellen & plaatsing</li>
+          <li style="display:flex; gap:12px"><span style="flex:0 0 auto; width:28px; height:28px; border-radius:8px; background:rgba(255,255,255,.08); display:grid; place-items:center; font-weight:700">4</span> Nazorg & evaluatie</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="kandidaten" class="section">
+    <div class="container split">
+      <div class="card">
+        <h3 style="margin-top:0">Schrijf je in</h3>
+        <p class="hint">Laat je gegevens achter, wij bellen je terug.</p>
+        <form action="https://formspree.io/f/movkzabl" method="POST" aria-label="Inschrijven" onsubmit="handleContactSubmit(event)">
+          <label for="naam">Naam *</label>
+          <input id="naam" name="naam" autocomplete="name" required />
+          <label for="email">E-mail *</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+          <label for="functie">Gewenste functie</label>
+          <select id="functie" name="functie">
+            <option>Productiemedewerker</option>
+            <option>Procesoperator</option>
+            <option>Havenmedewerker</option>
+            <option>Schoonmaker</option>
+            <option>Flensmonteur</option>
+            <option>Werkvoorbereider</option>
+          </select>
+          <label for="opmerking">Korte toelichting</label>
+          <textarea id="opmerking" name="bericht" placeholder="Vertel iets over je ervaring" required></textarea>
+          <button class="btn btn--primary" type="submit">Inschrijven</button>
+        </form>
+      </div>
+      <div>
+        <h3>Waarom ProMatch?</h3>
+        <p class="lead">Wij kennen de werkvloer, spreken de taal en denken met je mee over opleidingen, planning en vervoer.</p>
+        <ul class="list">
+          <li>Wekelijkse uitbetaling</li>
+          <li>Reiskostenvergoeding mogelijk</li>
+          <li>Opleidings- en doorgroeikansen</li>
+          <li>Persoonlijke begeleiding</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="#contact">Stel een vraag</a>
+          <a class="btn btn--primary" href="#kandidaten">Bekijk vacatures (binnenkort)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container contact">
+      <div>
+        <h3>Contact</h3>
+        <p class="lead">Neem contact op voor aanvragen, inschrijvingen of vragen. We reageren dezelfde werkdag.</p>
+        <div class="card">
+          <p><strong>ProMatch Uitzendbureau</strong></p>
+          <p>Tel: <a href="tel:+31640202016">+31 6 40202016</a><br/>E-mail: <a href="mailto:Pro.Match@outlook.com">Pro.Match@outlook.com</a></p>
+          <p class="hint">Vul het formulier in, of stuur ons direct een e-mail met je vraag.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Stuur een bericht</h3>
+        <form action="https://formspree.io/f/movkzabl" method="POST" aria-label="Contactformulier" onsubmit="handleContactSubmit(event)">
+          <label for="naam2">Naam *</label>
+          <input id="naam2" name="naam" required />
+          <label for="email2">E-mail *</label>
+          <input id="email2" name="email" type="email" required />
+          <label for="onderwerp">Onderwerp</label>
+          <input id="onderwerp" name="onderwerp" value="Nieuw bericht via ProMatch website" />
+          <label for="bericht2">Bericht *</label>
+          <textarea id="bericht2" name="bericht" required></textarea>
+          <button class="btn btn--primary" type="submit">Verzenden</button>
+          <p class="hint">Door te verzenden ga je akkoord met onze <a href="#">privacyverklaring</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footgrid">
+      <div>© <span id="year"></span> ProMatch Uitzendbureau. Alle rechten voorbehouden.</div>
+      <div style="display:flex; gap:10px">
+        <a href="#">Privacy</a>
+        <span aria-hidden="true">·</span>
+        <a href="#">Algemene voorwaarden</a>
+      </div>
+    </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  </footer>
+</body>
+</html>
